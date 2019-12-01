@@ -24,7 +24,7 @@ namespace PriceParser.ServiceApi.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        public ActionResult<string> Withdraw([FromBody] string priceString)
+        public JsonResult Parse([FromBody] string priceString)
         {
             var result = _priceParserService.ParsePrice(priceString);
 
