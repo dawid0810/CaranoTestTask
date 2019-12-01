@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PriceParser.ServiceApi.Services;
 
 namespace PriceParser.ServiceApi
 {
@@ -19,6 +20,7 @@ namespace PriceParser.ServiceApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.RegisterPriceParserServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
