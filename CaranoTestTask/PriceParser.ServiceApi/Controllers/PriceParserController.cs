@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PriceParser.Service;
+using PriceParser.ServiceApi.Models;
 
 namespace PriceParser.ServiceApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PriceParserController : ControllerBase
+    public class PriceParserController : Controller
     {
         private readonly IPriceParserService _priceParserService;
 
@@ -16,19 +17,22 @@ namespace PriceParser.ServiceApi.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         public IActionResult Welcome()
         {
             return Ok("Price Parser Api started");
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        public JsonResult Parse([FromBody] string priceString)
+        public ActionResult Parse([FromBody] PriceRequestModel priceRequest)
         {
-            var result = _priceParserService.ParsePrice(priceString);
+            var result = _priceParserService.ParsePrice(priceRequest.PriceString);
+            
+            if (result.IsSuccess)
+            {
+                return new JsonResult(result.Value);
+            }
 
-            return new JsonResult(result);
+            return BadRequest(result.Error);
         }
     }
 }
