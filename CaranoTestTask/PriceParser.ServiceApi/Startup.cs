@@ -14,11 +14,18 @@ namespace PriceParser.ServiceApi
             Configuration = configuration;
         }
 
+        private const string CorsPolicy = "PriceParserCorsPolicy";
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(CorsPolicy,
+                    builder => { builder.AllowAnyOrigin().AllowAnyHeader(); });
+            });
             services.AddControllers();
             services.RegisterPriceParserServices();
         }
@@ -34,6 +41,8 @@ namespace PriceParser.ServiceApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(CorsPolicy);
 
             app.UseAuthorization();
 

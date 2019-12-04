@@ -1,0 +1,9 @@
+body {
+  font: 100% Arial, Helvetica, sans-serif;
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 16px;
+}
+div {
+    background-color: #F7F7F7;
+}

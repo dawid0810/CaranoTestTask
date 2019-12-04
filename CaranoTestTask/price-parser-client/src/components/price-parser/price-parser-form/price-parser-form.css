@@ -1,0 +1,63 @@
+﻿input[type="text"]
+{
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 3%;
+    border: 1px solid #bbbbbb;
+    padding: 3%;
+    color: #555555;
+    font: 100% Arial, Helvetica, sans-serif;
+}
+
+input[type="text"]:focus
+{
+    box-shadow: 0 0 5px #43D1AF;
+    padding: 3%;
+    border: 1px solid #43D1AF;
+}
+
+.error, input[type="text"].error:focus
+{
+    box-shadow: 0 0 5px #d11850;
+    border: 1px solid #d11850;
+}
+
+.error-message
+{
+    color: #d11850;
+    margin: -12px 0 12px 0;
+    padding: 0 0 0 12px;
+}
+
+button[type="submit"]
+{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    padding: 3%;
+    background: #43D1AF;
+    border-bottom: 2px solid #30C29E;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    color: #fff;
+}
+
+button[type="submit"]:hover
+{
+    background: #2EBC99;
+}
+
+button[type="submit"].error, button[type="submit"].error:hover
+{
+    background: #d10045;
+    border-bottom: 2px solid #d11850;
+}
