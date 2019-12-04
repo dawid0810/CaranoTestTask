@@ -6,4 +6,4 @@ To run:
 ```sh
 npm start
 ```
-in price-parser-client directory
+in price-parser-client directory. Your client will start on http://localhost:3000
