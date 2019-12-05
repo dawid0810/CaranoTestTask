@@ -17,7 +17,6 @@ namespace PriceParser.BusinessCommon
             }
 
             var sb = new StringBuilder();
-            if (number < 0) return sb.ToString();
 
             if (number / 1000000 > 0)
             {
@@ -36,7 +35,9 @@ namespace PriceParser.BusinessCommon
             }
 
             if (number == 0 && sb.Length > 0)
+            {
                 return sb.ToString().Trim();
+            }
 
             sb.Append(ConvertTensAndUnits(number));
 

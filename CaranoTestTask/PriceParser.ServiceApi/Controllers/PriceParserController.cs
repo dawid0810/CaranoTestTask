@@ -25,7 +25,7 @@ namespace PriceParser.ServiceApi.Controllers
         [HttpPost]
         public ActionResult Parse([FromBody] PriceRequestModel priceRequest)
         {
-            var result = _priceParserService.ParsePrice(priceRequest.PriceString);
+            var result = _priceParserService.ParsePrice(priceRequest.Price);
             
             if (result.IsSuccess)
             {

@@ -13,7 +13,7 @@ namespace PriceParser.Service
             _parser = parser;
         }
 
-        public Result<string> ParsePrice(string price)
+        public Result<string> ParsePrice(decimal price)
         {
             try
             {

@@ -14,15 +14,8 @@ namespace PriceParser.BusinessCommon
             _numberParser = numberParser;
         }
 
-        public string ConvertPriceToWords(string priceString)
+        public string ConvertPriceToWords(decimal price)
         {
-            if (!IsPrice(priceString))
-            {
-                throw new ArgumentException("Given string is not in correct format");
-            }
-
-            var price = decimal.Parse(priceString, new CultureInfo("pl"));
-
             var dollars = (int)price;
             var cents = (int)((price - dollars) * 100);
 
@@ -40,12 +33,6 @@ namespace PriceParser.BusinessCommon
             }
 
             return sb.ToString();
-        }
-
-        private bool IsPrice(string text)
-        {
-            var regex = new Regex(@"^\d+(,\d{1,2})?$"); //regex that matches disallowed text
-            return regex.IsMatch(text.Replace(" ", string.Empty));
         }
     }
 }

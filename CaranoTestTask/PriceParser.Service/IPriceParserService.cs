@@ -4,6 +4,6 @@ namespace PriceParser.Service
 {
     public interface IPriceParserService
     {
-        Result<string> ParsePrice(string price);
+        Result<string> ParsePrice(decimal price);
     }
 }

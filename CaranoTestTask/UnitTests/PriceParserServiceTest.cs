@@ -31,11 +31,11 @@ namespace UnitTests
         {
             // arrange
             const string priceInWords = "Some price in words";
-            _mock.Mock<IPriceParser>().Setup(x => x.ConvertPriceToWords(It.IsAny<string>()))
+            _mock.Mock<IPriceParser>().Setup(x => x.ConvertPriceToWords(It.IsAny<decimal>()))
                 .Returns(priceInWords);
             
             // act
-            var result = _service.ParsePrice("1.00");
+            var result = _service.ParsePrice(1m);
             
             // assert
             Assert.IsTrue(result.IsSuccess);
@@ -47,11 +47,11 @@ namespace UnitTests
         {
             // arrange
             var exception = new Exception("Test exception");
-            _mock.Mock<IPriceParser>().Setup(x => x.ConvertPriceToWords(It.IsAny<string>()))
+            _mock.Mock<IPriceParser>().Setup(x => x.ConvertPriceToWords(It.IsAny<decimal>()))
                 .Throws(exception);
             
             // act
-            var result = _service.ParsePrice("1.00");
+            var result = _service.ParsePrice(1m);
             
             // assert
             Assert.IsFalse(result.IsSuccess);

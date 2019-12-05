@@ -15,6 +15,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\PriceParser.BusinessCommon\PriceParser.BusinessCommon.csproj" />
+      <ProjectReference Include="..\PriceParser.ServiceApi\PriceParser.ServiceApi.csproj" />
       <ProjectReference Include="..\PriceParser.Service\PriceParser.Service.csproj" />
     </ItemGroup>
 

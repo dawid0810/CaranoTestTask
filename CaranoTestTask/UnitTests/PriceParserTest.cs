@@ -28,17 +28,16 @@ namespace UnitTests
 
         [TestCase("0", "zero dollars", "zero", "")]
         [TestCase("1", "one dollar", "one", "")]
-        [TestCase("25,1", "twenty-five dollars and ten cents", "twenty-five", "ten")]
-        [TestCase("125,1", "one hundred twenty-five dollars and ten cents", "one hundred twenty-five", "ten")]
+        [TestCase("25.1", "twenty-five dollars and ten cents", "twenty-five", "ten")]
+        [TestCase("125.1", "one hundred twenty-five dollars and ten cents", "one hundred twenty-five", "ten")]
         [TestCase("100", "one hundred dollars", "one hundred", "")]
-        [TestCase("0,01", "zero dollars and one cent", "zero", "one")]
-        [TestCase("45 100", "forty-five thousand one hundred dollars", "forty-five thousand one hundred", "")]
+        [TestCase("0.01", "zero dollars and one cent", "zero", "one")]
         [TestCase("45100", "forty-five thousand one hundred dollars", "forty-five thousand one hundred", "")]
-        [TestCase("999 999 999,99",
+        [TestCase("999999999.99",
             "nine hundred ninety-nine million nine hundred ninety-nine thousand nine hundred ninety-nine dollars and ninety-nine cents",
             "nine hundred ninety-nine million nine hundred ninety-nine thousand nine hundred ninety-nine",
             "ninety-nine")]
-        public void ParsesPrices(string price, string expectedResult, string dollarString, string centsString)
+        public void ParsesPrices(decimal price, string expectedResult, string dollarString, string centsString)
         {
             // arrange
             _mock.Mock<INumberParser>().SetupSequence(x => x.ConvertNumberToWords(It.IsAny<int>()))
@@ -51,16 +50,6 @@ namespace UnitTests
             Assert.AreEqual(expectedResult, result);
         }
 
-        [TestCase("asd")]
-        [TestCase("123.34")]
-        [TestCase("123,345")]
-        [TestCase(",34")]
-        [TestCase("12,34a")]
-        public void ThrowsArgumentOutOfRangeException_WrongStringFormat(string priceString)
-        {
-            Assert.Throws<ArgumentException>(() => _parser.ConvertPriceToWords(priceString));
-        }
-
         [Test]
         public void ThrowsNumberParserExceptions()
         {
@@ -70,7 +59,7 @@ namespace UnitTests
             //act
 
             //assert
-            Assert.Throws<Exception>(() => _parser.ConvertPriceToWords("1"));
+            Assert.Throws<Exception>(() => _parser.ConvertPriceToWords(1));
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface IPriceParser
     {
-        string ConvertPriceToWords(string priceString);
+        string ConvertPriceToWords(decimal price);
     }
 }
